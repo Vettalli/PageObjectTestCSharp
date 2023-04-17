@@ -1,0 +1,10 @@
+﻿{
+  "url": "https://demoqa.com/",
+  "timeOutInSeconds": "5",
+  "chromeOptions" :
+  [
+    "--remote-allow-origins=*",
+    "--incognito",
+    "--blink-settings=imagesEnabled=false"
+  ]
+}

@@ -1,0 +1,16 @@
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\bin\Debug\TestProject1.dll
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\bin\Debug\TestProject1.pdb
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\bin\Debug\nunit.framework.dll
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\bin\Debug\nunit.framework.xml
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\obj\Debug\TestProject1.csproj.AssemblyReference.cache
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\obj\Debug\TestProject1.csproj.CoreCompileInputs.cache
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\obj\Debug\TestProject1.csproj.CopyComplete
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\obj\Debug\TestProject1.dll
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\obj\Debug\TestProject1.pdb
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\bin\Debug\selenium-manager\linux\selenium-manager
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\bin\Debug\selenium-manager\macos\selenium-manager
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\bin\Debug\selenium-manager\windows\selenium-manager.exe
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\bin\Debug\AngleSharp.dll
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\bin\Debug\WebDriver.dll
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\bin\Debug\WebDriverManager.dll
+E:\Projects\A1QA\CSharp\PageObjectTask\TestProject1\bin\Debug\AngleSharp.xml
