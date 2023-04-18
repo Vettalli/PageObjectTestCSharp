@@ -25,4 +25,12 @@ public class StringUtil
 
         return stringBuilder.ToString();
     }
+    
+    public static string GetXpathWithStringParam(string xpath, string param){
+        return String.Format(xpath, param);
+    }
+
+    public static String GetXpathWithNumberParam(string xpath, int param){
+        return String.Format(xpath, param);
+    }
 }

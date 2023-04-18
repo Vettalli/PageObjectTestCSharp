@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
+using DEMOQATests.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace DEMOQATests.JSONReader;
@@ -39,6 +42,14 @@ public static class JSONProvider
         
         return properties;
     }
+    
+    public static void GetUserData()
+    {
+        var json = ReadJSON("userData");
+        var user = JsonConvert.DeserializeObject<UserData[]>(json);
+
+        int t = 5;
+    }
      
     private static String ReadJSON(string type)
     {
@@ -52,8 +63,11 @@ public static class JSONProvider
             case "data":
                 json = File.ReadAllText(@"E:\Projects\A1QA\CSharp\PageObjectTestCSharp\PageObjectTask\DEMOQATests\Resoursces\data.json");
                 break;
+            case "userData":
+                json = File.ReadAllText(@"E:\Projects\A1QA\CSharp\PageObjectTestCSharp\PageObjectTask\DEMOQATests\Resoursces\userData.json");
+                break;
         }
         
         return json;
-    } 
+    }
 }
