@@ -19,7 +19,7 @@ public static class Browser
 
     public static void GoToUrl()
     {
-        driver.Url = JSONProvider.GetProperty("url");
+        driver.Url = JSONProvider.GetProperty("config" ,"url");
     }
 
     public static void StopDriverBrowser()

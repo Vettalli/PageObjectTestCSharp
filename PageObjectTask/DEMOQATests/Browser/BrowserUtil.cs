@@ -12,7 +12,7 @@ public static class BrowserUtil
     public static IWebDriver SetUpDriver()
     {
         ChromeOptions options = new ChromeOptions();
-        var chromeOptions = JSONProvider.GetProperties("chromeOptions");
+        var chromeOptions = JSONProvider.GetProperties("config" ,"chromeOptions");
 
         foreach (var option in chromeOptions)
         {

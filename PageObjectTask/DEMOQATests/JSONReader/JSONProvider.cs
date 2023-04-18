@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace DEMOQATests.JSONReader;
 
 public static class JSONProvider
 {
-    public static string GetProperty(string propertyKey)
+    public static string GetProperty(string type ,string propertyKey)
     {
-        string json = ReadJSON();
+        string json = ReadJSON(type);
         JObject data;
         
         try
@@ -26,10 +25,10 @@ public static class JSONProvider
         return data[propertyKey]!.Value<string>();;
     }
 
-    public static List<string> GetProperties(string propertiesKey)
+    public static List<string> GetProperties(string type ,string propertiesKey)
     {
         List<string> properties = new List<string>();
-        String json = ReadJSON();
+        String json = ReadJSON(type);
         JObject jo = JObject.Parse(json);
         JArray propertiesObj = (JArray)jo.GetValue(propertiesKey);
 
@@ -41,8 +40,20 @@ public static class JSONProvider
         return properties;
     }
      
-    private static String ReadJSON()
+    private static String ReadJSON(string type)
     {
-        return File.ReadAllText("E://Projects/A1QA/CSharp/PageObjectTask/DEMOQATests/Resoursces/config.json");
+        string json = "";
+        
+        switch (type)
+        {
+            case "config":
+                json = File.ReadAllText(@"E:\Projects\A1QA\CSharp\PageObjectTestCSharp\PageObjectTask\DEMOQATests\Resoursces\config.json");
+                break;
+            case "data":
+                json = File.ReadAllText(@"E:\Projects\A1QA\CSharp\PageObjectTestCSharp\PageObjectTask\DEMOQATests\Resoursces\data.json");
+                break;
+        }
+        
+        return json;
     } 
 }

@@ -9,7 +9,7 @@ namespace DEMOQATests.Waits;
 public class ConditionalWait
 {
     private static WebDriverWait wait;
-    private static readonly int timeOutInSeconds = Int32.Parse(JSONProvider.GetProperty("timeOutInSeconds"));
+    private static readonly int timeOutInSeconds = Int32.Parse(JSONProvider.GetProperty("config" ,"timeOutInSeconds"));
 
     public static WebDriverWait GetWaits()
     {
