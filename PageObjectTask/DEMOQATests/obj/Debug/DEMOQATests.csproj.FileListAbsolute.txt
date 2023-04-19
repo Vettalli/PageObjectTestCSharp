@@ -35,3 +35,6 @@ E:\Projects\A1QA\CSharp\PageObjectTestCSharp\PageObjectTask\DEMOQATests\obj\Debu
 E:\Projects\A1QA\CSharp\PageObjectTestCSharp\PageObjectTask\DEMOQATests\obj\Debug\DEMOQATests.csproj.CopyComplete
 E:\Projects\A1QA\CSharp\PageObjectTestCSharp\PageObjectTask\DEMOQATests\obj\Debug\DEMOQATests.dll
 E:\Projects\A1QA\CSharp\PageObjectTestCSharp\PageObjectTask\DEMOQATests\obj\Debug\DEMOQATests.pdb
+E:\Projects\A1QA\CSharp\PageObjectTestCSharp\PageObjectTask\DEMOQATests\bin\Debug\DEMOQATests.dll.config
+E:\Projects\A1QA\CSharp\PageObjectTestCSharp\PageObjectTask\DEMOQATests\bin\Debug\KellermanSoftware.Compare-NET-Objects.dll
+E:\Projects\A1QA\CSharp\PageObjectTestCSharp\PageObjectTask\DEMOQATests\bin\Debug\KellermanSoftware.Compare-NET-Objects.xml

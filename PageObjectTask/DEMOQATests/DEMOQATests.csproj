@@ -38,6 +38,10 @@
           <HintPath>..\packages\AngleSharp.0.9.10\lib\net45\AngleSharp.dll</HintPath>
           <Private>True</Private>
         </Reference>
+        <Reference Include="KellermanSoftware.Compare-Net-Objects, Version=3.1.0.0, Culture=neutral, PublicKeyToken=d970ace04cc85217">
+          <HintPath>..\packages\CompareNETObjects.3.01.0.0\lib\net451\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
           <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
           <Private>True</Private>
@@ -92,6 +96,7 @@
         <Compile Include="Waits\ConditionalWait.cs" />
     </ItemGroup>
     <ItemGroup>
+      <None Include="App.config" />
       <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>

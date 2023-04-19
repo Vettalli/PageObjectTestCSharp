@@ -43,12 +43,10 @@ public static class JSONProvider
         return properties;
     }
     
-    public static void GetUserData()
+    public static IEnumerable<UserData> GetUserData()
     {
         var json = ReadJSON("userData");
-        var user = JsonConvert.DeserializeObject<UserData[]>(json);
-
-        int t = 5;
+        return JsonConvert.DeserializeObject<IEnumerable<UserData>>(json);
     }
      
     private static String ReadJSON(string type)

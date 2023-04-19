@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DEMOQATests.Browser;
 using DEMOQATests.DEMOQA;
 using DEMOQATests.Helpers;
 using DEMOQATests.JSONReader;
 using DEMOQATests.Models;
 using DEMOQATests.Tests.Base;
+using KellermanSoftware.CompareNetObjects;
 using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace DEMOQATests.Tests;
 
@@ -115,13 +116,88 @@ public class Tests : BaseTests
         Assert.AreEqual(message2, message1);
     }
 
-    // [Test, TestCaseSource(nameof(TestData))]
-    // public void TablesTest(UserData userData)
-    // {
-    //     
-    // }
+    [Test, TestCaseSource(nameof(TestData))]
+    public void TablesTest(UserData userData)
+    {
+        UserData user = new UserData(userData.Id, userData.FirstName, userData.LastName
+                , userData.Email, userData.Age, userData.Salary, userData.Department);
+        MainPage mainPage = new MainPage();
+        WebTablesPage elementsPage = new WebTablesPage();
+        RegistrationFormPage registrationFormPage = new RegistrationFormPage();
+
+        var currentUrl = BrowserUtil.GetCurrentUrl();
+        var baseUrl = JSONProvider.GetProperty("config", "url");
+
+        if(currentUrl.Equals(baseUrl)){
+            var isMainPageOpen = mainPage.IsFormOpen();
+
+            Assert.True(isMainPageOpen, "DENOQA Main page is not opened");
+
+            mainPage.GoToElementsPage();
+
+            BrowserUtil.ScrollPage();
+
+            elementsPage.GoToWebTablesTab();
+        }
+
+        var isWebTablesPageOpen = elementsPage.IsFormOpen();
+
+        Assert.True(isWebTablesPageOpen, "Web tables page is not opened");
+
+        BrowserUtil.ScrollPage();
+
+        elementsPage.GoToWebTablesTab();
+        elementsPage.OpenRegistrationForm();
+
+        var isRegistrationFormOpen = registrationFormPage.IsFormOpen();
+
+        Assert.True(isRegistrationFormOpen, "Registration page is not opened");
+
+        registrationFormPage.FillFirstNameField(user.FirstName);
+        registrationFormPage.FillLastNameField(user.LastName);
+        registrationFormPage.FillEmailField(user.Email);
+        registrationFormPage.FillAgeField(user.Age);
+        registrationFormPage.FillSalaryField(user.Salary);
+        registrationFormPage.FillDepartmentField(user.Department);
+        registrationFormPage.ClickSubmitButton();
+
+
+        var isRegistrationFormClosed = elementsPage.IsRegistrationFormClosed();
+
+        Assert.True(isRegistrationFormClosed, "Registration page is still opened");
+
+        var userCurrent = elementsPage.GetUserDataFromTable(userData.Id, userData.FirstName, userData.LastName
+                , userData.Email, userData.Age, userData.Salary, userData.Department);
+        user = new UserData(userData.Id, userData.FirstName, userData.LastName
+            , userData.Email, userData.Age, userData.Salary, userData.Department);
+        
+        CompareLogic compareLogic = new CompareLogic();
+        ComparisonResult result = compareLogic.Compare(user, userCurrent);
+        
+        Assert.True(result.AreEqual, "Wrong user's data!");
+
+        var amountOfUsersBeforeDelete = elementsPage.GetNumberOfRows();
+
+        elementsPage.DeleteUser();
+
+        var amountOfUsersAfterDelete = elementsPage.GetNumberOfRows();
+
+        Assert.AreNotEqual(amountOfUsersAfterDelete, amountOfUsersBeforeDelete, "User is still in the list!");
+
+        bool isUser = true;
+
+        try {
+            elementsPage.GetUserDataFromTable(userData.Id, userData.FirstName, userData.LastName
+                , userData.Email, userData.Age, userData.Salary, userData.Department);
+        }
+        catch (NoSuchElementException ex){
+            isUser = false;
+        }
+
+        Assert.False(isUser, "User has not been deleted!");
+    }
     
-    // private static IEnumerable<Object[]> TestData(){
-    //     return JSONProvider.GetUserData();
-    // }
+    private static IEnumerable<UserData> TestData(){
+        return JSONProvider.GetUserData();
+    }
 }

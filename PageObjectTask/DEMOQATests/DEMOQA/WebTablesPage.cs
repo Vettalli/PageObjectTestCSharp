@@ -12,10 +12,10 @@ public class WebTablesPage : BaseForm
 {
     private string webTablesXpath = "//span[contains(text(), 'Web Tables')]";
     private string addButtonXpath = "//button[@id = 'addNewRecordButton']";
-    private string userDataFromTableXpath = "//*[text() = '%s']";
+    private string userDataFromTableXpath = "//*[text() = 'userData']";
     private string deleteRecordXpath = "//span[@id = 'delete-record-4']";
     private string rowsXpath = "//div[@class = 'rt-tr-group']";
-    private string cellXpath = "(//div[@class = 'rt-td'])[%d]";
+    private string cellXpath = "(//div[@class = 'rt-td'])[cellNumber]";
     
     public WebTablesPage() 
         : base(By.XPath("//div[@class = 'main-header'  and contains(text(), 'Web Tables')]"), "Elements label")
@@ -39,22 +39,22 @@ public class WebTablesPage : BaseForm
     }
 
     public UserData GetUserDataFromTable(String id, String firstName, String lastName, String email, String age, String salary, String department){
-        var firstNameEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, firstName)), "first name");
+        var firstNameEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, "userData",firstName)), "first name");
         var firstNameCurrent = firstNameEl.GetText();
 
-        var lastNameEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, lastName)), "last name");
+        var lastNameEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, "userData",lastName)), "last name");
         var lastNameCurrent = lastNameEl.GetText();
 
-        var emailEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, email)), "email");
+        var emailEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, "userData",email)), "email");
         var emailCurrent = emailEl.GetText();
 
-        var ageEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, age)), "age");
+        var ageEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, "userData",age)), "age");
         var ageCurrent = ageEl.GetText();
 
-        var salaryEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, salary)), "salary");
+        var salaryEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, "userData",salary)), "salary");
         var salaryCurrent = salaryEl.GetText();
 
-        var departmentEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, department)), "department");
+        var departmentEl = new TextBox(By.XPath(StringUtil.GetXpathWithStringParam(userDataFromTableXpath, "userData",department)), "department");
         var departmentCurrent = departmentEl.GetText();
 
         return new UserData(id, firstNameCurrent, lastNameCurrent, emailCurrent, ageCurrent, salaryCurrent, departmentCurrent);

@@ -26,11 +26,15 @@ public class StringUtil
         return stringBuilder.ToString();
     }
     
-    public static string GetXpathWithStringParam(string xpath, string param){
-        return String.Format(xpath, param);
+    public static string GetXpathWithStringParam(string xpath, string replaceStr,string param){
+        var finalXPath =xpath.Replace(replaceStr, param);
+         
+        return finalXPath;
     }
 
-    public static String GetXpathWithNumberParam(string xpath, int param){
-        return String.Format(xpath, param);
+    public static String GetXpathWithNumberParam(string xpath, string replaceStr,string param){
+        var finalXPath =xpath.Replace(replaceStr, param);
+         
+        return finalXPath;
     }
 }

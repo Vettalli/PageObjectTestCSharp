@@ -26,6 +26,11 @@ public static class BrowserUtil
         return driver;
     }
 
+    public static string GetCurrentUrl()
+    {
+        return driver.Url;
+    }
+
     public static void SetMaximumWindowSize()
     {
         driver.Manage().Window.Maximize();
