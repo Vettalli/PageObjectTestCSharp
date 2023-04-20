@@ -88,6 +88,7 @@
         <Compile Include="Helpers\RandomUtil.cs" />
         <Compile Include="Helpers\StringUtil.cs" />
         <Compile Include="Helpers\TableUtil.cs" />
+        <Compile Include="Helpers\TabUtil.cs" />
         <Compile Include="JSONReader\JSONProvider.cs" />
         <Compile Include="Models\UserData.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

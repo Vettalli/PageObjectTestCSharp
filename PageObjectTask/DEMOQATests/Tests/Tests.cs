@@ -24,6 +24,8 @@ public class Tests : BaseTests
         var isMainPageOpen = mainPage.IsFormOpen();
 
         Assert.True(isMainPageOpen, "DENOQA Main page is not opened");
+        
+        BrowserUtil.ScrollPage();
 
         mainPage.GoToAlertsFrameWindowsPage();
 
@@ -77,6 +79,8 @@ public class Tests : BaseTests
 
         Assert.True(isMainPageOpen, "DENOQA Main page is not opened");
 
+        BrowserUtil.ScrollPage();
+        
         mainPage.GoToAlertsFrameWindowsPage();
 
         BrowserUtil.ScrollPage();
@@ -133,6 +137,8 @@ public class Tests : BaseTests
 
             Assert.True(isMainPageOpen, "DENOQA Main page is not opened");
 
+            BrowserUtil.ScrollPage();
+            
             mainPage.GoToElementsPage();
 
             BrowserUtil.ScrollPage();
@@ -199,5 +205,68 @@ public class Tests : BaseTests
     
     private static IEnumerable<UserData> TestData(){
         return JSONProvider.GetUserData();
+    }
+    
+    [Test]
+    public void HandlesTest()
+    {
+        MainPage mainPage = new MainPage();
+        AlertsFrameWindowsPage alertsFrameWindowsPage = new AlertsFrameWindowsPage();
+        BrowserWindowsPage browserWindowsPage = new BrowserWindowsPage();
+        LinksPage linksPage = new LinksPage();
+        
+        BrowserUtil.ScrollPage();
+
+        var isMainPageOpen = mainPage.IsFormOpen();
+
+        Assert.True(isMainPageOpen, "DENOQA Main page is not opened");
+
+        mainPage.GoToAlertsFrameWindowsPage();
+
+        BrowserUtil.ScrollPage();
+
+        alertsFrameWindowsPage.GoToBrowserWindowsTab();
+
+        var isBrowserWindowsPage = browserWindowsPage.IsFormOpen();
+
+        Assert.True(isBrowserWindowsPage, "Browser Windows page is not opened");
+
+        browserWindowsPage.OpenNewTab();
+
+        TabUtil.SwitchToChildTab();
+
+        var isNewTab = browserWindowsPage.IsNewTabOpened();
+
+        Assert.True(isNewTab, "New tab page is not opened");
+
+        TabUtil.SwitchToParentTab();
+
+        isBrowserWindowsPage = browserWindowsPage.IsFormOpen();
+
+        Assert.True(isBrowserWindowsPage, "Browser Windows page is not opened");
+
+        browserWindowsPage.OpenElements();
+        
+        BrowserUtil.ScrollPage();
+        
+        browserWindowsPage.GoToLinksTab();
+
+        var isLinksPage = linksPage.IsFormOpen();
+
+        Assert.True(isLinksPage, "Links page is not opened");
+
+        linksPage.GoToHomePage();
+
+        TabUtil.SwitchToChildTab();
+
+        isMainPageOpen = mainPage.IsFormOpen();
+
+        Assert.True(isMainPageOpen, "DENOQA Main page is not opened");
+
+        TabUtil.SwitchToParentTab();
+
+        isLinksPage = linksPage.IsFormOpen();
+
+        Assert.True(isLinksPage, "Links page is not opened");
     }
 }
