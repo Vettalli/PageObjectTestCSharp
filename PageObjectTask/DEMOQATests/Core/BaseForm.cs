@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using DEMOQATests.Browser;
 using DEMOQATests.Waits;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace DEMOQATests.Core;
@@ -18,6 +19,8 @@ public class BaseForm
 
     public bool IsFormOpen()
     {
+        TestContext.Progress.WriteLine("Check if form "+formName+" is opened");
+        
         return ConditionalWait.WaitForElementPresented(uniqueLocator).Displayed;
     }
 }

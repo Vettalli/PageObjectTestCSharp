@@ -51,9 +51,11 @@
           <Private>True</Private>
         </Reference>
         <Reference Include="System" />
+        <Reference Include="System.Configuration" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Drawing" />
+        <Reference Include="System.IO.Compression" />
         <Reference Include="System.Xml" />
         <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb">
             <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
@@ -85,6 +87,7 @@
         <Compile Include="Elements\TextBox.cs" />
         <Compile Include="Helpers\AlertUtil.cs" />
         <Compile Include="Helpers\FrameUtil.cs" />
+        <Compile Include="Helpers\Logger.cs" />
         <Compile Include="Helpers\RandomUtil.cs" />
         <Compile Include="Helpers\StringUtil.cs" />
         <Compile Include="Helpers\TableUtil.cs" />

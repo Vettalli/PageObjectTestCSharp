@@ -1,4 +1,5 @@
 ﻿using DEMOQATests.JSONReader;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using WebDriverManager.DriverConfigs.Impl;
@@ -11,6 +12,8 @@ public static class BrowserUtil
     
     public static IWebDriver SetUpDriver()
     {
+        TestContext.Progress.WriteLine("Set up driver");
+        
         ChromeOptions options = new ChromeOptions();
         var chromeOptions = JSONProvider.GetProperties("config" ,"chromeOptions");
 
@@ -38,11 +41,15 @@ public static class BrowserUtil
 
     public static void RefreshPage()
     {
+        TestContext.Progress.WriteLine("Refresh page");
+        
         driver.Navigate().Refresh();
     }
 
     public static void ScrollPage()
     {
+        TestContext.Progress.WriteLine("Scroll page");
+        
         IJavaScriptExecutor jsExecutor = (IJavaScriptExecutor)driver;
         jsExecutor.ExecuteScript("window.scrollBy(0,document.body.scrollHeight)", "");
     }

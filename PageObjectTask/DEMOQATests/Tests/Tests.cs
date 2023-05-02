@@ -16,6 +16,8 @@ public class Tests : BaseTests
     [Test]
     public void AlertsTest()
     {
+       TestContext.Progress.WriteLine("AlertsTest start");
+        
         JSONProvider.GetUserData();
         
         MainPage mainPage = new MainPage();
@@ -68,10 +70,14 @@ public class Tests : BaseTests
 
         Assert.False(AlertUtil.IsAlertExist(), "Alert window is opened");
         Assert.AreEqual(alertsPage.GetText(), "You entered "+text, "Alert text is missing!");
+        
+        TestContext.Progress.WriteLine("AlertsTest start end");
     }
     
     [Test]
     public void FrameTest(){
+        TestContext.Progress.WriteLine("FrameTest start");
+        
         MainPage mainPage = new MainPage();
         IframePage iframePage = new IframePage();
 
@@ -118,33 +124,51 @@ public class Tests : BaseTests
         var message2 = iframePage.GetMessage(indexForFrame2);
 
         Assert.AreEqual(message2, message1);
+        
+        TestContext.Progress.WriteLine("FrameTest end");
     }
 
     [Test, TestCaseSource(nameof(TestData))]
     public void TablesTest(UserData userData)
     {
+        TestContext.Progress.WriteLine("TablesTest start");
+        
         UserData user = new UserData(userData.Id, userData.FirstName, userData.LastName
                 , userData.Email, userData.Age, userData.Salary, userData.Department);
         MainPage mainPage = new MainPage();
         WebTablesPage elementsPage = new WebTablesPage();
         RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
-        var currentUrl = BrowserUtil.GetCurrentUrl();
-        var baseUrl = JSONProvider.GetProperty("config", "url");
+        //var currentUrl = BrowserUtil.GetCurrentUrl();
+        //var baseUrl = JSONProvider.GetProperty("config", "url");
 
-        if(currentUrl.Equals(baseUrl)){
-            var isMainPageOpen = mainPage.IsFormOpen();
+        BrowserUtil.ScrollPage();
+        
+        var isMainPageOpen = mainPage.IsFormOpen();
 
-            Assert.True(isMainPageOpen, "DENOQA Main page is not opened");
+        Assert.True(isMainPageOpen, "DENOQA Main page is not opened");
 
-            BrowserUtil.ScrollPage();
+        BrowserUtil.ScrollPage();
             
-            mainPage.GoToElementsPage();
+        mainPage.GoToElementsPage();
 
-            BrowserUtil.ScrollPage();
+        BrowserUtil.ScrollPage();
 
-            elementsPage.GoToWebTablesTab();
-        }
+        elementsPage.GoToWebTablesTab();
+        
+        // if(currentUrl.Equals(baseUrl)){
+        //     var isMainPageOpen = mainPage.IsFormOpen();
+        //
+        //     Assert.True(isMainPageOpen, "DENOQA Main page is not opened");
+        //
+        //     BrowserUtil.ScrollPage();
+        //     
+        //     mainPage.GoToElementsPage();
+        //
+        //     BrowserUtil.ScrollPage();
+        //
+        //     elementsPage.GoToWebTablesTab();
+        // }
 
         var isWebTablesPageOpen = elementsPage.IsFormOpen();
 
@@ -201,6 +225,8 @@ public class Tests : BaseTests
         }
 
         Assert.False(isUser, "User has not been deleted!");
+        
+        TestContext.Progress.WriteLine("TableTest end");
     }
     
     private static IEnumerable<UserData> TestData(){
@@ -210,6 +236,8 @@ public class Tests : BaseTests
     [Test]
     public void HandlesTest()
     {
+        TestContext.Progress.WriteLine("HandlesTest start");
+        
         MainPage mainPage = new MainPage();
         AlertsFrameWindowsPage alertsFrameWindowsPage = new AlertsFrameWindowsPage();
         BrowserWindowsPage browserWindowsPage = new BrowserWindowsPage();
@@ -268,5 +296,7 @@ public class Tests : BaseTests
         isLinksPage = linksPage.IsFormOpen();
 
         Assert.True(isLinksPage, "Links page is not opened");
+        
+        TestContext.Progress.WriteLine("HandlesTest end");
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using DEMOQATests.Waits;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -23,26 +24,36 @@ public abstract class BaseElement
 
     public IWebElement GetElement()
     {
+        TestContext.Progress.WriteLine("Get element: " + elementName);
+        
         return driver.FindElement(uniqueLocator);
     }
     
     public ReadOnlyCollection<IWebElement> GetElements()
     {
+        TestContext.Progress.WriteLine("Get elements: " + elementName);
+        
         return driver.FindElements(uniqueLocator);
     }
 
     public void Click()
     {
+        TestContext.Progress.WriteLine("Click on " + elementName);
+        
         GetElement().Click();
     }
 
     public bool IsElementDisplayed()
     {
+        TestContext.Progress.WriteLine("Checking if element "+elementName+"displayed on the page");
+        
         return GetElement().Displayed;
     }
 
     public String GetText()
     {
+        TestContext.Progress.WriteLine("Get " + elementName +"' text");
+        
         return GetElement().Text;
     }
 }
